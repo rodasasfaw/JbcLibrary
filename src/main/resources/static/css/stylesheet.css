@@ -1,0 +1,42 @@
+/*body{*/
+    /*font-family: 'Aref Ruqaa', serif;*/
+    /*margin-left:50px;*/
+    /*margin-right:50px;*/
+    /*background-image:url(https://static.vecteezy.com/system/resources/previews/000/112/097/original/blue-watercolor-free-vector-background.jpg);*/
+/*}*/
+/*.lobsterfont{*/
+    /*font-family: 'Lobster', cursive;*/
+/*}*/
+/*.nobullet{list-style:none}*/
+/*div {*/
+    /*background-image: url(http://creativemisha.com/wp-content/uploads/2014/06/Full-HD-Wallpapers-1920x1080-185.jpg);width: 600px;height:337px*/
+/*}*/
+/*.image{width:426}*/
+/*img {*/
+    /*display: block;*/
+    /*margin: auto;*/
+    /*width: 40%;*/
+/*}*/
+h1{
+    font-weight:bold;
+    font-size:100px;
+    font-style: italic;
+    color:darkslateblue;
+
+}
+
+
+.centered {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:100px;
+}
+
+.bottom-right{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+
+}
