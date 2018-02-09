@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="../static/css/stylesheet3.css">
+    <link rel="stylesheet" href="css/stylesheet3.css">
+
 
 </head>
 <body>
@@ -24,46 +27,44 @@
         <li class="active"><a href="/">Home</a></li>
         <li class="active"><a href="/processbook">List of books</a></li>
         <li class="active"><a href="/addbook">Add a book</a></li>
-        <li class="active"><a href="#">Borrow a book</a></li>
-        <li class="active"><a href="#">Return a book</a></li>
+        <li class="active"><a href="/borrowbook">Borrow a book</a></li>
+        <li class="active"><a href="/returnbook">Return a book</a></li>
+
 
     </ul>
 
 </div>
+<div class="centered">
 <div>
-    <table>
+    <table class="centertable">
         <tr>
-            <th><strong>Title</strong></th>
-            <th><strong>Author</strong></th>
-            <th><strong>Publication Year</strong></th>
-            <th><strong>ISBN Number</strong></th>
-            <th><strong>Status</strong></th>
+            <th align="left"><strong>Title</strong></th>
+            <th align="left"><strong>Author</strong></th>
+            <th align="left"><strong>Publication Year</strong></th>
+            <th align="left"><strong>ISBN Number</strong></th>
+            <th align="left"><strong>Action</strong></th>
 
         </tr>
-
 
         <tr th:each="book : ${books}">
             <td th:text="${book.title}"></td>
             <td th:text="${book.author}"></td>
             <td th:text="${book.publication_year}"></td>
             <td th:text="${book.isbn_num}"></td>
-            <td th:unless="${book.status}">returned</td>
-            <td  th:href ="@{/return/{id}(id=${book.id})}">
-                <a th:if="${book.status}">return</a></td>
+            <td  th:if="${book.status}">returned</td>
+            <td th:unless="${book.status}">
+            <a th:href ="@{/return/{id}(id=${book.id})}">return</a></td>
 
-            
+
+
+
 
         </tr>
 
 
-
-
-
-
-
     </table>
 </div>
-<a href="/addbook"> Add a book</a><br/>
+</div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

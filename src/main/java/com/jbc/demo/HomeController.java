@@ -61,16 +61,16 @@ public class HomeController {
     @GetMapping ("/borrow/{id}")
     public String borrowBook(@PathVariable("id") long id){
 
-        Book borrowedbook=bookRepository.findOne(id);
-        borrowedbook.setNewStatus(false);
-        bookRepository.save(borrowedbook);
+        Book borrowbook=bookRepository.findOne(id);
+        borrowbook.setNewStatus(false);
+        bookRepository.save(borrowbook);
         return "redirect:/borrowbook";
     }
     @GetMapping ("/return/{id}")
     public String returnBook(@PathVariable("id") long id){
 
         Book returnbook=bookRepository.findOne(id);
-        returnbook.setNewStatus(false);
+        returnbook.setNewStatus(true);
         bookRepository.save(returnbook);
         return "redirect:/returnbook";
     }

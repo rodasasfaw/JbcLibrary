@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="../static/css/stylesheet2.css">
+    <link rel="stylesheet" href="css/stylesheet2.css">
+
 
 </head>
 <body>
@@ -21,47 +24,73 @@
 
     <ul class="nav nav-tabs distance">
         <li class="active"><a href="/">Home</a></li>
-        <li class="active"><a href="/processbook">List of books</a></li>
+        <li class="active"><a href="/showbooklist">List of books</a></li>
         <li class="active"><a href="/addbook">Add a book</a></li>
-        <li class="active"><a href="/processborrow">Borrow a book</a></li>
-        <li class="active"><a href="/processreturn">Return a book</a></li>
+        <li class="active"><a href="/borrowbook">Borrow a book</a></li>
+        <li class="active"><a href="/returnbook">Return a book</a></li>
 
 
     </ul>
 
 </div>
-<form autocomplete="off" action="#" th:action="@{/processbook}"
-      th:object="${book}" method="post">
+<div>
+
+    <img src="Images/2560x1600-true-blue-solid-color-background.jpg" height="540" style="width:100%;"/>
+
+    <div class="centered">
+
+        <form autocomplete="off" action="#" th:action="@{/processbook}"
+
+              th:object="${book}" method="post">
+            <tr>
+                <td>Title:    </td>
     <span th:if="${#fields.hasErrors('title')}"
-          th:errors="*{title}">Title:</span>
-    <input type="text" id="title" placeholder="required"
-           th:field="*{title}" /><br />
+          th:errors="*{title}"></span>
+            <input type="text" id="title" placeholder="required"
+                   th:field="*{title}" /><br />
+
+            </tr>
+            <tr>
+                <td>Author:</td>
+            <span th:if="${#fields.hasErrors('author')}"
+                  th:errors="*{author}"></span>
+            <input type="text" id="author" placeholder="required"
+                   th:field="*{author}" /><br />
+            </tr>
+        <tr>
+            <td>Year of Publication:</td>
+            <span th:if="${#fields.hasErrors('publication_year')}"
+                  th:errors="*{publication_year}"></span>
+            <input type="text" id="publication_year" placeholder="required"
+                   th:field="*{publication_year}" /><br />
+        </tr>
+         <tr>
+             <td>ISBN Number:</td>
+            <span th:if="${#fields.hasErrors('isbn_num')}"
+                  th:errors="*{isbn_num}"></span>
+            <input type="text" id="isbn_num" placeholder="optional"
+                   th:field="*{isbn_num}" /><br />
 
 
-    <span th:if="${#fields.hasErrors('author')}"
-          th:errors="*{author}">Author:</span>
-    <input type="text" id="author" placeholder="required"
-           th:field="*{author}" /><br />
+</tr>
+            <tr>
+            <td>Image:</td>
+            <span th:if="${#fields.hasErrors('image')}"
+                  th:errors="*{image}"></span>
+            <input type="text" id="" placeholder="optional"
+                   th:field="*{image}" /><br />
+            </tr>
 
-    <span th:if="${#fields.hasErrors('publication_year')}"
-          th:errors="*{publication_year}">Year of Publication:</span>
-    <input type="text" id="publication_year" placeholder="required"
-           th:field="*{publication_year}" /><br />
 
-    <span th:if="${#fields.hasErrors('isbn_num')}"
-          th:errors="*{isbn_num}">ISBN Number:</span>
-    <input type="text" id="" placeholder="optional"
-           th:field="*{isbn_num}" /><br />
-
-   <!--Saves thymeleaf field from selection form html to database and book list-->
-    <!--<select th:field="*{status}" book="books">-->
-        <!--<option value=" not available">borrow</option>-->
-        <!--<option value="available">return</option>-->
-    <!--</select>-->
+            <center><button type="submit" class="btn btn-default" th:href="@{/processbook}" >Submit</button></center>
+</form>
+    </div>
 
 
 
-    <button type="submit" class="btn btn-default" th:href="@{/processbook}">Submit</button>
+
+    </div>
+
 </form>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

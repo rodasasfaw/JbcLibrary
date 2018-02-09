@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Book {
@@ -11,11 +14,26 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
+    @Size(min=4)
     private String title;
+    @NotNull
+    @Size(min=4)
     private String author;
-    private String publication_year;
+    @NotNull
+    @Min(3)
+    private int publication_year;
     private String isbn_num;
+    private String image;
     private boolean status=true;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public boolean isStatus() {
         return status;
@@ -57,11 +75,11 @@ public class Book {
         this.author = author;
     }
 
-    public String getPublication_year() {
+    public int getPublication_year() {
         return publication_year;
     }
 
-    public void setPublication_year(String publication_year) {
+    public void setPublication_year(int publication_year) {
         this.publication_year = publication_year;
     }
 
