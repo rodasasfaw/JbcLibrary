@@ -32,7 +32,7 @@ public class HomeController {
         return "booklist";
 
     }
-    @PostMapping("/processbook")
+    @RequestMapping("/processbook")
     public String procesaddbookForm(@Valid @ModelAttribute("book") Book books, BindingResult result,Model model) {
         if (result.hasErrors()) {
             return "addbookform";
@@ -43,12 +43,36 @@ public class HomeController {
         return "booklist";
     }
 
-    @GetMapping("/processborrow")
-    public String showborrowedList(Model model){
+    @RequestMapping("/borrowbook")
+    public String showborrowList(Model model){
         model.addAttribute("books", bookRepository.findAll());
 
-        return "booklist";
+        return "borrowlist";
 
+    }
+    @RequestMapping("/returnbook")
+    public String showreturnList(Model model){
+        model.addAttribute("books", bookRepository.findAll());
+
+        return "returnlist";
+
+    }
+
+    @GetMapping ("/borrow/{id}")
+    public String borrowBook(@PathVariable("id") long id){
+
+        Book borrowedbook=bookRepository.findOne(id);
+        borrowedbook.setNewStatus(false);
+        bookRepository.save(borrowedbook);
+        return "redirect:/borrowbook";
+    }
+    @GetMapping ("/return/{id}")
+    public String returnBook(@PathVariable("id") long id){
+
+        Book returnbook=bookRepository.findOne(id);
+        returnbook.setNewStatus(false);
+        bookRepository.save(returnbook);
+        return "redirect:/returnbook";
     }
     @GetMapping("/processreturn")
     public String showreturnlist(Model model){
@@ -56,11 +80,7 @@ public class HomeController {
         return "booklist";
 
     }
-    @RequestMapping("/detail/{id}")
-    public String showBook(@PathVariable("id") long id,Model model){
-        model.addAttribute("book", bookRepository.findOne(id));
-        return "booklist";
-    }
+
     @RequestMapping("/update/{id}")
     public String updateBook(@PathVariable("id") long id, Model model){
         model.addAttribute("book", bookRepository.findOne(id));

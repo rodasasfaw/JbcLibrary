@@ -15,14 +15,17 @@ public class Book {
     private String author;
     private String publication_year;
     private String isbn_num;
-    private String status;
+    private boolean status=true;
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
+    }
+    public void setNewStatus(boolean newStatus) {
+        status = newStatus;
     }
 
     public Book(String title) {
@@ -70,15 +73,10 @@ public class Book {
         this.isbn_num = isbn_num;
     }
 
+
     public Book() {
     }
 
-    public Book(String title, String author, String publication_year, String isbn_num, String status) {
-        this.title = title;
-        this.author = author;
-        this.publication_year = publication_year;
-        this.isbn_num = isbn_num;
-        this.status = status;
-    }
+
 }
 

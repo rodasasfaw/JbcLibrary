@@ -24,7 +24,7 @@
         <li class="active"><a href="/">Home</a></li>
         <li class="active"><a href="/processbook">List of books</a></li>
         <li class="active"><a href="/addbook">Add a book</a></li>
-        <li class="active"><a href="#">Borrow a book</a></li>
+        <li class="active"><a href="/">Borrow a book</a></li>
         <li class="active"><a href="#">Return a book</a></li>
 
     </ul>
@@ -32,20 +32,28 @@
 </div>
 <div>
     <table>
-        <td><strong>Title</strong></td>
-        <td><strong>Author</strong></td>
-        <td><strong>Publication Year</strong></td>
-        <td><strong>ISBN Number</strong></td>
-        <td><strong>Status</strong></td>
+    <tr>
+        <th><strong>Title</strong></th>
+        <th><strong>Author</strong></th>
+        <th><strong>Publication Year</strong></th>
+        <th><strong>ISBN Number</strong></th>
+        <th><strong>Status</strong></th>
+        <th><strong>Action</strong></th>
 
-        <td th:each="book : ${books}">
-            <td th:text="${book.title}"></td><br/>
-            <td th:text="${book.author}"></td><br/>
-            <td th:text="${book.publication_year}"></td><br/>
-            <td th:text="${book.isbn_num}"></td><br/>
-            <td th:text="available"></td><br/>
+    </tr>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.publication_year}"></td>
+            <td th:text="${book.isbn_num}"></td>
+            <td th:text ="${book.status}"> </td>
+            <td  th:if="${book.status}">
+                <a th:href ="@{/borrow/{id}(id=${book.id})}">borrow </a></td>
 
-        </tr>
+            <td th:unless="${book.status}">borrowed</td>
+
+
+</tr>
     </table>
 </div>
 
