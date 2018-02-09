@@ -84,13 +84,13 @@ public class HomeController {
     @RequestMapping("/update/{id}")
     public String updateBook(@PathVariable("id") long id, Model model){
         model.addAttribute("book", bookRepository.findOne(id));
-        return "addbookform";
+        return "redirect:/addbook";
 
     }
     @RequestMapping("/delete/{id}")
     public String delBook(@PathVariable("id") long id){
         bookRepository.delete(id);
-        return"booklist";
+        return"redirect:/showbooklist";
     }
 
 
